@@ -1,0 +1,19 @@
+.header-element-container {
+    border: 1px solid red;
+    display: inline-block;
+}
+
+.header-element-button {
+    font-family: ubuntu;
+    font: "ubuntu";
+    font-weight: normal;
+    border: none;
+    background: white;
+
+    font-family: ubuntu;
+    font: "ubuntu";
+    font-weight: normal;
+    font-size: 25px;
+
+    padding: 0;
+}
