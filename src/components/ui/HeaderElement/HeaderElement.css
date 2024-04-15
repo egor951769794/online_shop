@@ -16,9 +16,17 @@
     line-height: 45px;
 
     padding: 0;
+
+    transition-duration: .25s;
 }
 
 .header-element-bold {
     font-size: 30px;
     font-weight: bold;
   }
+
+.header-element-button.hovered {
+    color: rgb(140, 140, 140);
+    transition-duration: .25s;
+    cursor: pointer;
+}

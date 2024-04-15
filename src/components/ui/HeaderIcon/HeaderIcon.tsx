@@ -4,21 +4,21 @@ import './HeaderIcon.css';
 
 type HeaderIconProps = {
   src: string
-  handler?: React.MouseEventHandler<HTMLButtonElement>;
   selected?: boolean;
+  doHover?: boolean;
 }
 
-export default function HeaderIcon(props: HeaderIconProps) {
+export default function HeaderIcon({src, selected = false, doHover = false}: HeaderIconProps) {
 
   const [hovered, setHovered] = useState(false);
 
   return (
     <>
-      <label className='header-icon-container' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <button className='header-icon-button' onClick={props.handler}>
-          <img className={hovered? "header-icon-icon hovered" : "header-icon-icon"} src={props.src}></img>
+      <div className='header-icon-container' onMouseEnter={() => setHovered(doHover)} onMouseLeave={() => setHovered(false)}>
+        <button className='header-icon-button'>
+          <img className={hovered? "header-icon-icon hovered" : "header-icon-icon"} src={src}></img>
         </button>
-      </label>
+      </div>
     </>
   );
 }

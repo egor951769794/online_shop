@@ -2,7 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './Header.css';
 import HeaderElement from '../ui/HeaderElement/HeaderElement';
-import HeaderIcons from '../HeaderIcons/HeaderIcons';
+import HeaderIcon from '../ui/HeaderIcon/HeaderIcon';
+import search from 'src/assets/icons/search.svg'
+import user from 'src/assets/icons/user.svg'
+import city from 'src/assets/icons/city.svg'
+import Link from '../ui/Link/Link';
 
 
 export default function Header() {
@@ -10,13 +14,26 @@ export default function Header() {
     <div className="header">
       <div className='header-container'>
         <div className='header-container-third'>
-          <HeaderElement text="Съешь еще этиъ аауа" handler={() => alert(1)}></HeaderElement>
+          <Link handler={() => alert(24432532)}
+            content={<>
+            <HeaderIcon src={city} doHover={true}></HeaderIcon>
+            <HeaderElement text="Съеаауа" doHover={true}></HeaderElement>
+            </>}
+          />
+        </div>
+        
+        <div className='header-container-third'>
+          <HeaderElement text='МАГАЗ' isBold={true}></HeaderElement>
         </div>
         <div className='header-container-third'>
-          <HeaderElement text='МАГАЗ' handler={() => {}} isBold={true}></HeaderElement>
-        </div>
-        <div className='header-container-third'>
-          <HeaderIcons/>
+          <Link 
+            handler={() => alert('search')}
+            content={<div><HeaderIcon src={search} doHover={true}></HeaderIcon></div>}
+          />
+          <Link 
+            handler={() => alert('user')} 
+            content={<div><HeaderIcon src={user} doHover={true}></HeaderIcon></div>}
+          />
         </div>
       </div>
     </div>

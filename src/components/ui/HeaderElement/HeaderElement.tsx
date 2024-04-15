@@ -1,17 +1,21 @@
-import React, { MouseEventHandler } from 'react';
+import React, { useState } from 'react';
 import './HeaderElement.css';
 
 type HeaderElementProps = {
   text: string;
-  handler: React.MouseEventHandler<HTMLButtonElement>;
   isBold?: boolean;
+  doHover?: boolean;
 }
 
-export default function HeaderElement(props: HeaderElementProps) {
+export default function HeaderElement({text, isBold = false, doHover = false}: HeaderElementProps ) {
+
+  const [hovered, setHovered] = useState(false);
+  let buttonClassName = 'header-element-button'.concat(isBold? ' header-element-bold' : '', hovered? ' hovered' : '');
+
   return (
     <>
-      <div className='header-element-container'>
-        <button className={props.isBold? 'header-element-button header-element-bold' : 'header-element-button'} onClick={props.handler}>{props.text}</button>
+      <div className='header-element-container'  onMouseEnter={() => setHovered(doHover)} onMouseLeave={() => setHovered(false)}>
+        <button className={buttonClassName}>{text}</button>
       </div>
     </>
   );
