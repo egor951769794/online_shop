@@ -1,8 +1,10 @@
 .header-element-container {
     display: inline-block;
+    align-self: center;
 }
 
 .header-element-button {
+
     font-family: ubuntu;
     font: "ubuntu";
     font-weight: normal;
@@ -12,7 +14,7 @@
     font-family: ubuntu;
     font: "ubuntu";
     font-weight: normal;
-    font-size: 25px;
+    
     line-height: 45px;
 
     padding: 0;
@@ -20,8 +22,19 @@
     transition-duration: .25s;
 }
 
-.header-element-bold {
+.header-element-button.big {
     font-size: 30px;
+}
+
+.header-element-button.default {
+    font-size: 25px;
+}
+
+.header-element-button.small {
+    font-size: 16px;
+}
+
+.header-element-bold {
     font-weight: bold;
   }
 

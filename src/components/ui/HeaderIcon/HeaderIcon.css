@@ -1,6 +1,8 @@
 .header-icon-container {
     padding: 4px 12px;
     display: inline-block;
+    align-self: center;
+    cursor: pointer;
 }
 
 .header-icon-button {
@@ -8,12 +10,10 @@
     background: white;
     color: black;
     padding: 0;
-    cursor: pointer;
 }
 
 .header-icon-icon {
     padding: 4px;
-    width: 32px;
     transition: .25s;
 }
 
@@ -21,4 +21,12 @@
     filter: invert(52%) sepia(1%) saturate(0%) hue-rotate(39deg) brightness(95%) contrast(89%);
     transition: .25s;
     cursor: pointer;
+}
+
+.header-icon-icon.default {
+    width: 32px;
+}
+
+.header-icon-icon.small {
+    width: 24px;
 }

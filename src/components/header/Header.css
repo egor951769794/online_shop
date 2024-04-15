@@ -1,3 +1,24 @@
+.header {
+    padding: 15px 0;
+    background: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all .5s;
+    position: fixed;
+}
+
+.header.visible {
+    transition: cubic-bezier() .75s;
+
+}
+
+.header.hidden {
+    transform: translate(0, -120px);
+    transition: cubic-bezier() .75s;
+
+}
+
 .header-container {
     width: 90%;
     margin: 10px auto;

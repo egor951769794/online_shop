@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './HeaderElement.css';
 
 type HeaderElementProps = {
   text: string;
   isBold?: boolean;
   doHover?: boolean;
+  size?: string;
 }
 
-export default function HeaderElement({text, isBold = false, doHover = false}: HeaderElementProps ) {
+export default function HeaderElement({text, isBold = false, doHover = false, size='default'}: HeaderElementProps ) {
 
   const [hovered, setHovered] = useState(false);
-  let buttonClassName = 'header-element-button'.concat(isBold? ' header-element-bold' : '', hovered? ' hovered' : '');
+  const buttonClassName = 'header-element-button'.concat(isBold? ' header-element-bold' : '', hovered? ' hovered' : '', ' ', size);
 
   return (
     <>
