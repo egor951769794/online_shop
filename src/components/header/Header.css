@@ -1,11 +1,12 @@
 .header {
-    padding: 15px 0;
     background: white;
     top: 0;
-    left: 0;
+    left: 50%;
     width: 100%;
     transition: all .5s;
     position: fixed;
+    max-width: 2520px;
+    transform: translate(-50%, 0);
 }
 
 .header.visible {
@@ -14,12 +15,13 @@
 }
 
 .header.hidden {
-    transform: translate(0, -120px);
+    transform: translate(-50%, -105%);
     transition: cubic-bezier() .75s;
 
 }
 
 .header-container {
+    padding: 15px 0;
     width: 90%;
     margin: 10px auto;
     display: flex;

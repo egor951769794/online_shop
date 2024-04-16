@@ -8,6 +8,10 @@ import user from 'src/assets/icons/user.svg'
 import city from 'src/assets/icons/city.svg'
 import Link from '../ui/Link/Link';
 
+import { useOutsideClick } from 'src/hooks/UseClickOutside';
+
+import Catalog from '../Catalog/Catalog';
+
 
 export default function Header() {
 
@@ -15,29 +19,30 @@ export default function Header() {
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollPosition(position);
+    if (scrollPosition > 150) setDisplayCatalog(false)
   };
+
+  const ref = useOutsideClick(() => setDisplayCatalog(false));
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-
     return () => {
         window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const handleHeaderAppearance = () => {
-    
-  }
+  const [displayCatalog, setDisplayCatalog] = useState(false);
 
   const headerClassName = "header".concat(scrollPosition > 150? ' hidden' : ' visible')
+  const catalogClassName = "cats-container".concat(!displayCatalog? ' hidden' : ' visible')
 
   return (
-    <div className={headerClassName}>
+    <div ref={ref} className={headerClassName}>
       <div className='header-container'>
         <div className='header-container-third'>
           <Link handler={() => alert(scrollPosition)}
             content={<>
-            <HeaderIcon src={city} size={"small"}></HeaderIcon>
+            <HeaderIcon src={city} size={"small"} doHover={true}></HeaderIcon>
             <HeaderElement text="Город доставки..." doHover={true} size={"small"}></HeaderElement>
             </>}
           />
@@ -48,15 +53,16 @@ export default function Header() {
         </div>
         <div className='header-container-third'>
           <Link 
-            handler={() => alert('search')}
+            handler={() => setDisplayCatalog(!displayCatalog)}
             content={<div><HeaderIcon src={search} doHover={true}></HeaderIcon></div>}
           />
           <Link 
-            handler={() => alert('user')} 
+            handler={() => alert(displayCatalog)} 
             content={<div><HeaderIcon src={user} doHover={true}></HeaderIcon></div>}
           />
         </div>
       </div>
+      <Catalog display={displayCatalog} changeDisplay={setDisplayCatalog} class={catalogClassName}></Catalog>
     </div>
   );
 }

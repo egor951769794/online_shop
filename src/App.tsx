@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/header/Header';
 import MainImage from './components/MainImage/MainImage';
+import Catalog from './components/Catalog/Catalog';
 
 function App() {
   return (
