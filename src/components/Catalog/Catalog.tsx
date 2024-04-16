@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import './Catalog.css';
 import Link from '../ui/Link/Link';
+import CatalogCategory from '../ui/CatalogCategory/CatalogCategory';
 
 import { categories as cats } from 'src/data/Categories'; 
 
@@ -12,10 +13,11 @@ type CatalogProps = {
 }
 
 export default function Catalog(props: CatalogProps) {
-
   return (
     <>
-      <div className={props.class}>{cats.map((cat) => (<div className='cats-category'>{cat.title}</div>))}</div>
+      <div className={props.class}>
+        <CatalogCategory cats={cats}></CatalogCategory>
+      </div>
     </>
   )
 }

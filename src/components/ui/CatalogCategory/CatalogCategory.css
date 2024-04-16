@@ -1,0 +1,31 @@
+.cat-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.cat-container > :first-child {
+    padding-left: 0;
+}
+
+.cat-container > :last-child {
+    padding-right: 0;
+}
+
+.cat-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.link-container > .subcat-title {
+    cursor: pointer;
+}
+
+.subcats-list {
+    padding: 0 20px;
+    padding-bottom: 25px;
+    width: 30%;
+    
+}

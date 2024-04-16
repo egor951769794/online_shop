@@ -1,0 +1,14 @@
+.subcat-title {
+    margin-bottom: 8px;
+}
+
+.subcat-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    margin-bottom: 2px;
+    border-radius:50%;
+    background: #d5d5d5;
+    display:inline-block;
+}
