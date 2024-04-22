@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/header/Header';
 import MainImage from './components/MainImage/MainImage';
-import Catalog from './components/Catalog/Catalog';
+import Items from './components/Items/Items';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
       <div>fdfdafdf</div>
       <div>fdfdafdf</div>
       <div>fdfdafdf</div>
+      <Items categoryId={14}></Items>
     </div>
   );
 }
