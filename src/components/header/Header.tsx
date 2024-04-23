@@ -11,6 +11,7 @@ import Link from '../ui/Link/Link';
 import { useOutsideClick } from 'src/hooks/UseClickOutside';
 
 import Catalog from '../Catalog/Catalog';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Header() {

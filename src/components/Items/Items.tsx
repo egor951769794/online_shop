@@ -28,7 +28,7 @@ export default function Items(props: ItemsProps) {
   return (
     <>
       {items.filter(
-        (item) => {return item.categoryId == filter.category}
+        (item) => {return item.categoryId.includes(filter.category)}
       )
       .filter(filter.material > 0 ? (item) => {return item.materialId?.includes(filter.material)} : () => {return true})
       .filter(filter.season > 0 ? (item) => {return item.seasonId == filter.season} : () => {return true})

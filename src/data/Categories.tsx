@@ -89,3 +89,4 @@ export const categories: Category[] = [
 export const shoeCats = [categories.
     find((cat) => cat.title == "Обувь")?.categoryId]
     .concat(categories.find((cat) => cat.title == "Обувь")?.subCategories?.map((subcat) => subcat.categoryId))
+    
