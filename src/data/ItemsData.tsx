@@ -4,12 +4,11 @@ export interface Item {
     article: string, 
     desc?: string, 
     categoryId: number,
-    material?: {id: number, value: string}[],
-    season?: {id: number, value: string},
-    color?: {id: number, value: string}[],
-    sport?: {id: number, value: string},
+    materialId?: number[],
+    seasonId?: number,
+    colorId?: number[],
+    styleId?: number[],
     country?: string,
-    brand?: {id: number, value: string}
     photos: string[]
 }
 
@@ -20,7 +19,10 @@ export const items: Item[] = [
         article: "53KSVGLJ452D",
         desc: "Ну что за тапочки?",
         categoryId: 14,
-        material: [{id: 10, value: "Кожа"}],
+        materialId: [5, 9],
+        seasonId: 4,
+        colorId: [13],
+        country: "Китай",
         photos: []
     },
 ]
