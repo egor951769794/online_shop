@@ -1,0 +1,26 @@
+.filter-el-dropdown.visible {
+    display: block;
+}
+
+.filter-el-dropdown {
+    display: none;
+}
+
+.filter-el-text {
+    cursor: pointer;
+    user-select: none;
+}
+
+.filter-el-text {
+    font-weight: bold;
+}
+
+.filter-el-dropdown-option.selected {
+    background: #000;
+    color: white;
+}
+
+.filter-el-dropdown-option {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+}

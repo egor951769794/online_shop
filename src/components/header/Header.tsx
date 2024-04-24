@@ -11,10 +11,13 @@ import Link from '../ui/Link/Link';
 import { useOutsideClick } from 'src/hooks/UseClickOutside';
 
 import Catalog from '../Catalog/Catalog';
+
 import { useNavigate } from 'react-router-dom';
 
 
 export default function Header() {
+
+  const navigate = useNavigate()
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
@@ -48,9 +51,11 @@ export default function Header() {
             </>}
           />
         </div>
-        
         <div className='header-container-third'>
-          <HeaderElement text='МАГАЗ' isBold={true} size={"big"}></HeaderElement>
+        <Link 
+          content={<HeaderElement text='МАГАЗ' isBold={true} size={"big"} doHover={true}></HeaderElement>}
+          handler={() => {navigate("/"); setDisplayCatalog(false)}}
+        />
         </div>
         <div className='header-container-third'>
           <Link 

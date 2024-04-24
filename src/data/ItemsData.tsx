@@ -22,6 +22,20 @@ export const items: Item[] = [
         materialId: [5, 9],
         seasonId: 4,
         colorId: [13],
+        styleId: [2],
+        country: "Китай",
+        photos: []
+    },
+    {
+        itemId: 1,
+        name: "mikal bordan sneakers",
+        article: "GOH5O432NVDS",
+        desc: "whaaataaaaaa heeeeeeeeeeeeeeeeeeeeeeeeeeeelll ououooooo",
+        categoryId: [2, 11],
+        materialId: [2],
+        seasonId: 3,
+        colorId: [2, 6],
+        styleId: [3],
         country: "Китай",
         photos: []
     },

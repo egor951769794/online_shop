@@ -16,7 +16,7 @@ export default function Catalog(props: CatalogProps) {
   return (
     <>
       <div className={props.class}>
-        <CatalogCategory cats={cats}></CatalogCategory>
+        <CatalogCategory cats={cats} displayCatalog={props.changeDisplay}></CatalogCategory>
       </div>
     </>
   )

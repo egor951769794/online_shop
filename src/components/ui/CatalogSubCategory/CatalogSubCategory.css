@@ -12,3 +12,7 @@
     background: #d5d5d5;
     display:inline-block;
 }
+
+.link-container > .subcat-title {
+    cursor: pointer;
+}
