@@ -1,6 +1,5 @@
-.items-list-container {
-    width: 70%;
-    margin-top: 150px;
+.items-list-list {
+    margin-top: 190px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -8,4 +7,17 @@
     align-content: flex-start;
     padding-bottom: 30px;
     margin-bottom: 30px;
+}
+
+.items-list-header {
+    margin-top: 150px;
+}
+
+.items-list-container {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    /* background: rgb(243, 213, 193); */
+    overflow: hidden;
+    display: flex;
 }

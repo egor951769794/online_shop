@@ -13,6 +13,7 @@ import ItemListed from '../ItemListed/ItemListed';
 import { colors, materials, seasons, sizes, shoeSizes, styles } from 'src/data/Properties';
 
 import ItemInfo from '../Item/ItemInfo';
+import { categories } from 'src/data/Categories';
 
 type ItemsProps = {
   categoryId: number
@@ -40,6 +41,10 @@ export default function Items(props: ItemsProps) {
   const checkSelection = (n: number, arr: number[]) => {
     return arr.includes(n);
   }
+
+  const header = categories.find((cat) => cat.categoryId === props.categoryId)?
+  categories.find((cat) => cat.categoryId === props.categoryId)?.title :
+  categories.map((cat) => cat.subCategories?.find((subcat) => subcat.categoryId === props.categoryId)?.title)
 
   return (
     <>
@@ -80,6 +85,7 @@ export default function Items(props: ItemsProps) {
           }
         />
         <ItemsList
+          header={header}
           display={whatToDisplay == -1} 
           content={
             <>

@@ -7,6 +7,6 @@
     display: flex;
 }
 
-.items-list-content {
-    display: flex;
+.items-header {
+    margin-top: 150px;
 }
