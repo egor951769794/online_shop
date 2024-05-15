@@ -1,5 +1,4 @@
 .items-list-list {
-    margin-top: 190px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -20,4 +19,5 @@
     /* background: rgb(243, 213, 193); */
     overflow: hidden;
     display: flex;
+    flex-direction: column;
 }

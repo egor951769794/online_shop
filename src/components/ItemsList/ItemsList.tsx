@@ -21,7 +21,7 @@ export default function ItemsList(props: ItemsListProps) {
   }
 
   useEffect(() => {
-    document.querySelector('.items-list-container')?.scrollTo(0, listScroll)
+    document.querySelector('.items-list-list')?.scrollTo(0, listScroll)
   }, [props.display])
 
   if (props.display) return (
