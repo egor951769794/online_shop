@@ -3,6 +3,8 @@ import './FilterElement.css';
 import { Property } from 'src/data/Properties';
 import Link from '../Link/Link';
 
+import { useOutsideClick } from 'src/hooks/UseClickOutside';
+
 type FilterElementProps = {
   title: string,
   filter: (n: number) => void
@@ -14,16 +16,18 @@ type FilterElementProps = {
     style: number[];
   }
   properties: Property[]
-  checkSelection: any
+  checkSelection: any,
 }
 
 export default function FilterElement(props: FilterElementProps) {
 
   const [dropped, setDropped] = useState(false);
 
+  const ref = useOutsideClick(() => setDropped(false));
+
   return (
     <>
-      <div className='filter-el-container'>
+      <div ref={ref} className='filter-el-container'>
         <Link
           content={<div className='filter-el-text'>{props.title}</div>}
           handler={() => setDropped(!dropped)}

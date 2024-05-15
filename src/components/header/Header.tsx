@@ -53,7 +53,7 @@ export default function Header() {
         </div>
         <div className='header-container-third'>
         <Link 
-          content={<HeaderElement text='МАГАЗ' isBold={true} size={"big"} doHover={true}></HeaderElement>}
+          content={<HeaderElement text='shop' isBold={true} size={"big"} doHover={true}></HeaderElement>}
           handler={() => {navigate("/"); setDisplayCatalog(false)}}
         />
         </div>

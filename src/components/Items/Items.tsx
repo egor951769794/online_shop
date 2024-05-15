@@ -1,4 +1,4 @@
-import { useState, } from 'react';
+import { useRef, useState, } from 'react';
 
 import './Items.css';
 import { items } from 'src/data/ItemsData';
@@ -8,7 +8,11 @@ import ItemsList from '../ItemsList/ItemsList';
 
 import FilterElement from '../ui/FilterElement/FilterElement';
 
+import ItemListed from '../ItemListed/ItemListed';
+
 import { colors, materials, seasons, sizes, shoeSizes, styles } from 'src/data/Properties';
+
+import ItemInfo from '../Item/ItemInfo';
 
 type ItemsProps = {
   categoryId: number
@@ -16,7 +20,8 @@ type ItemsProps = {
 
 export default function Items(props: ItemsProps) {
 
-  const [sortMethod, setSortMethod] = useState();
+  // const [sortMethod, setSortMethod] = useState();
+  const [whatToDisplay, setWhatToDisplay] = useState(-1);
   const [filter, setFilter] = useState({
     category: props.categoryId,
     material: [0],
@@ -38,8 +43,9 @@ export default function Items(props: ItemsProps) {
 
   return (
     <>
-      <div className='items-wrapper'>
-        <ItemsFilter 
+      <div className='items-wrapper' >
+        <ItemsFilter
+          display={whatToDisplay == -1}
           content={
             <>
               <FilterElement 
@@ -74,6 +80,7 @@ export default function Items(props: ItemsProps) {
           }
         />
         <ItemsList
+          display={whatToDisplay == -1} 
           content={
             <>
               {items.filter(
@@ -83,11 +90,12 @@ export default function Items(props: ItemsProps) {
             .filter(filter.season > 0 ? (item) => {return item.seasonId == filter.season} : () => {return true})
             .filter(filter.color.includes(0) ? () => {return true} : (item) => {return item.colorId?.some(v => filter.color.includes(v))})
             .filter(filter.style.includes(0) ? () => {return true} : (item) => {return item.styleId?.some(v => filter.style.includes(v))})
-            .map((item) => <div>{item.name}</div>)
+            .map((item) => <ItemListed goto={setWhatToDisplay} item={item}></ItemListed>)
             }
             </>
           }
-        />     
+        />
+        <ItemInfo goBack={setWhatToDisplay} item={whatToDisplay != -1? items.find((item) => item.itemId == whatToDisplay) : undefined}></ItemInfo>
       </div>
     </>
   )

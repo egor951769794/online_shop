@@ -8,6 +8,7 @@
     max-width: 2520px;
     transform: translate(-50%, 0);
     border-bottom:  2px solid rgb(224, 224, 224);
+    z-index: 1;
 }
 
 .header.visible {

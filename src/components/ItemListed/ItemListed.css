@@ -1,0 +1,35 @@
+.item-listed-container {
+    min-width: 250px;
+    min-height: 250px;
+    width: 20vw;
+    height: 20vw;
+    max-width: 300px;
+    max-height: 300px;
+    cursor: pointer;
+
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 0
+    
+}
+
+.item-listed-bottom {
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    left: 5%;
+    padding: 8px 0px;
+    max-height: 50px;
+    overflow: hidden;
+    text-align: center;
+    background: #efefef;
+}
+
+.item-listed-bg {
+    user-select: none;
+    pointer-events: none;
+}

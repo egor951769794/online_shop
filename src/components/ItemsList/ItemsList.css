@@ -1,4 +1,11 @@
 .items-list-container {
     width: 70%;
     margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    align-content: flex-start;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
