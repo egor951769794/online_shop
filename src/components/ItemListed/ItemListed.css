@@ -19,17 +19,38 @@
 
 .item-listed-bottom {
     position: absolute;
-    width: 90%;
+    width: 100%;
     bottom: 0;
-    left: 5%;
+    left: 0;
     padding: 8px 0px;
     max-height: 50px;
     overflow: hidden;
     text-align: center;
     background: #efefef;
+    text-align: left;
+    padding-left: 10px;
 }
 
-.item-listed-bg {
-    user-select: none;
-    pointer-events: none;
+.item-listed-bottom-discount {
+    display: flex;
+}
+
+.item-listed-bottom-price {
+    font-size: 18px;
+    /* font-weight: bold; */
+    color: rgb(0, 73, 73);
+    
+}
+
+.item-listed-bottom-price.dashed {
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgb(52, 52, 52);
+    line-height: 24px;
+    text-decoration:line-through;
+    text-decoration-thickness: 1.5px;
+}
+
+.item-listed-bottom-price.discounted {
+    color: rgb(196, 66, 66);
 }

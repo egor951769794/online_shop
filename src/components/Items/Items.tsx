@@ -1,4 +1,4 @@
-import { useRef, useState, } from 'react';
+import { useState, } from 'react';
 
 import './Items.css';
 import { items } from 'src/data/ItemsData';

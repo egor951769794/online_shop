@@ -1,7 +1,20 @@
-import adsn from 'src/assets/photos/adsn.png'
-import nsn from 'src/assets/photos/nsn.jpg'
+import adsn1 from 'src/assets/photos/adsn1.webp'
+import adsn2 from 'src/assets/photos/adsn2.webp'
+import adsn3 from 'src/assets/photos/adsn3.webp'
+
+import nsn1 from 'src/assets/photos/nsn1.webp'
+import nsn2 from 'src/assets/photos/nsn2.webp'
+import nsn3 from 'src/assets/photos/nsn3.webp'
+
+import psn1 from 'src/assets/photos/psn1.webp'
+import psn2 from 'src/assets/photos/psn2.webp'
+import psn3 from 'src/assets/photos/psn3.webp'
+
+
+
+
+
 import bbs from 'src/assets/photos/bbs.png'
-import psn from 'src/assets/photos/psn.jpg'
 
 export interface Item {
     itemId: number,
@@ -14,7 +27,9 @@ export interface Item {
     colorId?: number[],
     styleId?: number[],
     country?: string,
-    photos: string[]
+    photos: string[],
+    price: number,
+    discount?: number
 }
 
 
@@ -30,33 +45,37 @@ export const items: Item[] = [
         colorId: [13],
         styleId: [2],
         country: "Индонезия",
-        photos: [bbs,psn]
+        photos: [bbs],
+        price: 7850,
     },
     {
         itemId: 1,
-        name: "Nike кроссовки",
+        name: "Nike кроссовки Venture Runner",
         article: "GOH5O432NVDS",
         desc: "",
         categoryId: [2, 11],
-        materialId: [2],
-        seasonId: 3,
-        colorId: [2, 6],
+        materialId: [2, 5, 17],
+        seasonId: 1,
+        colorId: [13],
         styleId: [3],
         country: "Китай",
-        photos: [nsn]
+        photos: [nsn1, nsn2, nsn3],
+        price: 11290,
+        discount: 0.25
     },
     {
         itemId: 2,
-        name: "Adidas кроссовки",
+        name: "adidas Originals кеды GAZELLE",
         article: "OU23UROU36DAFD",
         desc: "",
         categoryId: [2, 11],
-        materialId: [2, 5],
+        materialId: [5],
         seasonId: 3,
-        colorId: [2, 13],
-        styleId: [3],
+        colorId: [11],
+        styleId: [1],
         country: "Индонезия",
-        photos: [adsn]
+        photos: [adsn1, adsn2, adsn3],
+        price: 15299
     },
     {
         itemId: 3,
@@ -69,7 +88,8 @@ export const items: Item[] = [
         colorId: [13],
         styleId: [1],
         country: "США",
-        photos: []
+        photos: [],
+        price: 5199,
     },
     {
         itemId: 4,
@@ -82,7 +102,8 @@ export const items: Item[] = [
         colorId: [4],
         styleId: [3],
         country: "Индонезия",
-        photos: []
+        photos: [],
+        price: 3400
     },
     {
         itemId: 5,
@@ -95,7 +116,8 @@ export const items: Item[] = [
         colorId: [11],
         styleId: [1],
         country: "Китай",
-        photos: []
+        photos: [],
+        price: 2990
     },
     {
         itemId: 6,
@@ -105,9 +127,10 @@ export const items: Item[] = [
         categoryId: [2, 11],
         materialId: [2, 5],
         seasonId: 3,
-        colorId: [2, 13],
+        colorId: [2],
         styleId: [3],
-        country: "Индонезия",
-        photos: [psn]
+        country: "Вьетнам",
+        photos: [psn1, psn2, psn3],
+        price: 6399
     },
 ]

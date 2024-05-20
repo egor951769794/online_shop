@@ -42,13 +42,18 @@
 
 .item-info-info {
     width: 50%;
-    background: #f0f0f0;
+    /* background: #f0f0f0; */
     
+}
+
+.item-info-name {
+    font-size: 24px;
 }
 
 .item-info-photo {
     max-width: 50%;
     height: 70vh;
+    max-height: 800px;
     position: relative;
 }
 

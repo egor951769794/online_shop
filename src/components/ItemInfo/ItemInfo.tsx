@@ -39,7 +39,7 @@ export default function ItemInfo(props: ItemInfoProps) {
         </div>
         <div className='item-info-bottom'>
           <div className='item-info-info'>
-            {props.item.name}
+            <div className='item-info-name'>{props.item.name}</div>
           </div>
           <div className='item-info-photo' onMouseEnter={() => setPhHovered(1)} onMouseLeave={() => setPhHovered(0)}>
             <div className='item-info-photo-buttons'>
