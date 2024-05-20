@@ -30,7 +30,7 @@ export const items: Item[] = [
         colorId: [13],
         styleId: [2],
         country: "Индонезия",
-        photos: [bbs]
+        photos: [bbs,psn]
     },
     {
         itemId: 1,

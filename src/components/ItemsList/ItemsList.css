@@ -10,6 +10,11 @@
 
 .items-list-header {
     margin-top: 150px;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(214, 214, 214);
 }
 
 .items-list-container {

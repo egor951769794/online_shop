@@ -12,7 +12,7 @@ import ItemListed from '../ItemListed/ItemListed';
 
 import { colors, materials, seasons, sizes, shoeSizes, styles } from 'src/data/Properties';
 
-import ItemInfo from '../Item/ItemInfo';
+import ItemInfo from '../ItemInfo/ItemInfo';
 import { categories } from 'src/data/Categories';
 
 type ItemsProps = {

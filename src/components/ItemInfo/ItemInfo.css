@@ -1,0 +1,122 @@
+.item-info-container {
+    margin-top: 115px;
+    width: 100%;
+}
+
+.item-info-goback {
+    color:  rgb(163, 163, 163);
+    cursor: pointer;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.arrow {
+    cursor: pointer;
+    border: solid rgb(163, 163, 163);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.item-info-cats {
+    display: flex;
+    border-bottom: 2px solid rgb(226, 226, 226);
+    margin-bottom: 10px;
+}
+
+
+.item-info-cat {
+    margin-right: 5px;
+    margin-bottom: 9px;
+}
+
+.item-info-bottom {
+    display: flex;
+    width: 100%;
+    margin-bottom: 25px;
+    /* overflow: auto; */
+}
+
+.item-info-info {
+    width: 50%;
+    background: #f0f0f0;
+    
+}
+
+.item-info-photo {
+    max-width: 50%;
+    height: 70vh;
+    position: relative;
+}
+
+.item-info-photoImg {
+    height: 100%;
+    width: 100%;
+    object-fit:contain;
+    object-position: top;
+    background: #f0f0f0;
+}
+
+.item-info-photo-buttons {
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.item-info-photo-buttons-upper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 14px;
+    padding-left: 8px;
+}
+
+.item-info-photo-buttons > * {
+    width: 33%;
+}
+
+.item-info-photo-buttons-prev {
+    transition-duration: .25s;
+    width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 18px 32px 18px 0;
+   border-color: transparent #6a6a6a transparent transparent;
+   transform: rotate(0deg);
+   margin-right: 30px;
+}
+
+
+.item-info-photo-buttons-prev.hidden {
+    opacity: 0;
+    transition-duration: .25s;
+}
+
+.item-info-photo-buttons-next {
+    transition-duration: .25s;
+    width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 18px 0 18px 32px;
+   border-color: transparent transparent transparent #6a6a6a;
+   transform: rotate(0deg);
+}
+
+.item-info-photo-buttons-next.hidden {
+    opacity: 0;
+    transition-duration: .25s;
+}
+
+.item-info-photo-buttons-expand {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 90%;
+    width: 100%;
+
+}
