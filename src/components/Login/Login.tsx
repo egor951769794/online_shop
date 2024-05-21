@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import './Login.css';
 
+import axios from 'src/utils/axios'
+const reg_url = '/users'
+
+
 
 
 type LoginProps = {
@@ -16,14 +20,14 @@ export default function Login(props: LoginProps) {
 
   const [registrationData, setRegistrationData] = useState(
     {
-      username: '',
+      login: '',
       password: '',
     }
   )
 
   const [authData, setAuthData] = useState(
     {
-      username: '',
+      login: '',
       password: '',
     }
   )
@@ -41,9 +45,22 @@ export default function Login(props: LoginProps) {
     setAuthData({...authData, [event.target.name] : event.target.value})
   }
 
-  const handleRegSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleRegSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
+    try {
+      console.log(registrationData)
+      const response = await axios.post(reg_url,
+        {"login": registrationData.login, "password": registrationData.password},
+        {
+          headers: { 'Content-Type' : 'application/json' },
+          withCredentials: true
+        }
+      )
+    } catch(err) {
+      console.log(err)
+      console.log(registrationData)
+    }
   }
 
   const handleAuthSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -55,13 +72,13 @@ export default function Login(props: LoginProps) {
     <div className='login-container'>
       {windowState ?
       <form className='login-form' onSubmit={handleRegSubmit}>
-        <input name='username' type='text' placeholder='Адрес эл.почты' value={registrationData.username} onChange={handleReg}/>
+        <input name='login' type='text' placeholder='Адрес эл.почты' value={registrationData.login} onChange={handleReg}/>
         <input name='password' type='password' placeholder='Пароль' value={registrationData.password} onChange={handleReg}/>
         <button type='submit' className='login-button'>Зарегистрироваться</button>
       </form>
       : 
       <form className='login-form' onSubmit={handleAuthSubmit}>
-        <input name='username' type='text' placeholder='Адрес эл.почты' value={authData.username} onChange={handleAuth}/>
+        <input name='login' type='text' placeholder='Адрес эл.почты' value={authData.login} onChange={handleAuth}/>
         <input name='password' type='password' placeholder='Пароль' value={authData.password} onChange={handleAuth}/>
         <button type='submit' className='login-button'>Войти</button>
       </form>}
