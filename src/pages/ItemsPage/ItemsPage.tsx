@@ -7,9 +7,9 @@ export default function ItemsPage() {
   const location = useLocation()
 
   return (
-    <div className='app'>
+    <>
       <Header></Header>
       <Items categoryId={location.state.catId}></Items>
-    </div>
+    </>
   );
 }

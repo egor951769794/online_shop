@@ -63,7 +63,7 @@ export default function Header() {
             content={<div><HeaderIcon src={search} doHover={true}></HeaderIcon></div>}
           />
           <Link 
-            handler={() => alert(displayCatalog)} 
+            handler={() => {navigate("/login"); setDisplayCatalog(false)}} 
             content={<div><HeaderIcon src={user} doHover={true}></HeaderIcon></div>}
           />
         </div>
