@@ -67,3 +67,11 @@
     cursor: pointer;
     color: white;
 }
+
+.login-button.disabled {
+    background: #e4e4e4;
+    color: rgb(108, 108, 108);
+    border: none;
+    cursor: default;
+    user-select: none;
+}
