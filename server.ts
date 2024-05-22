@@ -49,9 +49,8 @@ app.post('/users/login', async(req: Request, res: Response) => {
     if (user == null) return res.status(400).send('Неверный логин')
     try {
         if (await compare(req.body.password, user.password)) res.send(true)
-        else res.send(false)
+        else res.status(400).send('Неверный пароль')
     } catch(err) {
-        res.status(500).send()
         console.log(err)
     }
 })
