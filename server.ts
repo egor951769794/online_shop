@@ -47,11 +47,17 @@ app.post('/users/login', async(req: Request, res: Response) => {
     const user = users.find(user => user.login === req.body.login)
     if (user == null) return res.status(400).send('Неверный логин')
     try {
-        if (await compare(req.body.password, user.password)) res.set('user', JSON.stringify(user.id)).send(true)
+        if (await compare(req.body.password, user.password)) res.set('user', JSON.stringify(user.id)).send(true) //костыль
         else res.status(400).send('Неверный пароль')
     } catch(err) {
         console.log(err)
     }
+})
+
+app.get("/fetchUser/:id", (req: Request, res: Response) => {
+    const user = users.find(user => user.id.toString() === req.params.id)
+    if (user == null) {return res.status(404).send('Пользователя не существует')}
+    res.json(user)
 })
 
 app.listen(3001)

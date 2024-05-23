@@ -1,20 +1,16 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import './Login.css';
-import AuthContext from 'src/utils/AuthProvider/AuthProvider';
-import { AuthType } from 'src/utils/AuthProvider/AuthProvider';
 
+import './Login.css';
 import axios from 'src/utils/axios'
+
 const reg_url = '/users'
 const auth_url = 'users/login'
 
 
 
 export default function Login() {
-
-  const auth: AuthType | null = useContext(AuthContext)
-  
 
   const [windowState, setWindowState] = useState(0);
   const [errMsg, setErrMsg] = useState('')
@@ -107,9 +103,8 @@ export default function Login() {
         headers: { 'Content-Type' : 'application/json' },
         withCredentials: true
       }
-    ).then((response) => {if (response.data) {
-      auth?.authorize(true); 
-      setCookie("user", response.headers.user, { path: '/' })
+    ).then((response) => {if (response.data) { 
+      setCookie("user", response.headers.user, { path: '/' }) // костыль
       navigate("/")
     }})
     .catch((error) => {setErrMsg(error.response.data); setSuccess(false)})
@@ -119,7 +114,7 @@ export default function Login() {
     <div className='login-container'>
       {windowState ?
       <form className='login-form' onSubmit={handleRegSubmit}>
-        <input name='login' type='text' placeholder='Адрес эл.почты' value={registrationData.login} onChange={handleRegLogin}/>
+        <input name='login' type='text' placeholder='Логин' value={registrationData.login} onChange={handleRegLogin}/>
         <input name='password' type='password' placeholder='Пароль' value={registrationData.password} onChange={handleRegPassword}/>
         <button disabled={regDisabled} type='submit' className={regDisabled? 'login-button disabled' : 'login-button'}>Зарегистрироваться</button>
         {errMsg.length ? <div className='login-err'>{errMsg}</div> : <></>}

@@ -1,26 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
+import { useCookies } from "react-cookie";
 
 
-const AuthContext = createContext<AuthType | null>(null)
-
-export type AuthType = {
-    authorized: boolean,
-    authorize: React.Dispatch<React.SetStateAction<boolean>>
-}
+const AuthContext = createContext<Number | null>(null)
 
 type AuthProviderProps = {
     content: JSX.Element
 }
 
 export const AuthProvider = (props: AuthProviderProps) => {
-    const [auth, setAuth] = useState(false)
-    const authProps: AuthType = {
-        authorized: auth,
-        authorize: setAuth
-    }
+
+    const [cookie, setCookie] = useCookies(["user"])
+    const user: Number | null = cookie.user
 
     return (
-        <AuthContext.Provider value={authProps}>
+        <AuthContext.Provider value={user}>
             {props.content}
         </AuthContext.Provider>
     )

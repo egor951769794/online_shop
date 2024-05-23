@@ -7,15 +7,17 @@ import search from 'src/assets/icons/search.svg'
 import user from 'src/assets/icons/user.svg'
 import city from 'src/assets/icons/city.svg'
 import Link from '../ui/Link/Link';
-
-import { useOutsideClick } from 'src/hooks/UseClickOutside';
-
 import Catalog from '../Catalog/Catalog';
+import AuthContext from 'src/utils/AuthProvider/AuthProvider';
 
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { useOutsideClick } from 'src/hooks/UseClickOutside';
 
 
 export default function Header() {
+
+  const user_id = useContext(AuthContext) // костыль
 
   const navigate = useNavigate()
 
@@ -63,7 +65,7 @@ export default function Header() {
             content={<div><HeaderIcon src={search} doHover={true}></HeaderIcon></div>}
           />
           <Link 
-            handler={() => {navigate("/login"); setDisplayCatalog(false)}} 
+            handler={() => {user_id? navigate("/cabinet") : navigate("/login"); setDisplayCatalog(false)}} 
             content={<div><HeaderIcon src={user} doHover={true}></HeaderIcon></div>}
           />
         </div>
