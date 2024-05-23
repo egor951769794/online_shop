@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import './Login.css';
 import AuthContext from 'src/utils/AuthProvider/AuthProvider';
 import { AuthType } from 'src/utils/AuthProvider/AuthProvider';
@@ -19,6 +20,8 @@ export default function Login() {
   const [errMsg, setErrMsg] = useState('')
   const [sucMsg, setSucMsg] = useState('')
   const [success, setSuccess] = useState(false)
+
+  const [cookie, setCookie] = useCookies(["user"])
 
   const navigate = useNavigate()
 
@@ -104,7 +107,11 @@ export default function Login() {
         headers: { 'Content-Type' : 'application/json' },
         withCredentials: true
       }
-    ).then((response) => {if (response.data) {auth?.authorize(true); navigate("/")}})
+    ).then((response) => {if (response.data) {
+      auth?.authorize(true); 
+      setCookie("user", response.headers.user, { path: '/' })
+      navigate("/")
+    }})
     .catch((error) => {setErrMsg(error.response.data); setSuccess(false)})
   }
 
