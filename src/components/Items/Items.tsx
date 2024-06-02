@@ -96,6 +96,7 @@ export default function Items(props: ItemsProps) {
             .filter(filter.season > 0 ? (item) => {return item.seasonId == filter.season} : () => {return true})
             .filter(filter.color.includes(0) ? () => {return true} : (item) => {return item.colorId?.some(v => filter.color.includes(v))})
             .filter(filter.style.includes(0) ? () => {return true} : (item) => {return item.styleId?.some(v => filter.style.includes(v))})
+            .filter((item) => item.availability)
             .map((item) => <ItemListed goto={setWhatToDisplay} item={item}></ItemListed>)
             }
             </>

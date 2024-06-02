@@ -33,7 +33,7 @@ app.post('/users', async (req: Request, res: Response) => {
     if (users.find(user => user.login === req.body.login)) return res.status(400).send('Такой пользователь уже существует')
     try {
         const hashPassword = await hash(req.body.password, 8)
-        const user : User = { id: handleUserId(users), login: req.body.login, password: hashPassword, cart: [] }
+        const user : User = { id: handleUserId(users), login: req.body.login, password: hashPassword, cart: [], orders: [] }
         users.push(user)
     } catch(err) {
         res.status(500).send()
@@ -54,10 +54,17 @@ app.post('/users/login', async(req: Request, res: Response) => {
     }
 })
 
-app.get("/fetchUser/:id", (req: Request, res: Response) => {
+app.get("/fetchUser/:id", async(req: Request, res: Response) => {
     const user = users.find(user => user.id.toString() === req.params.id)
     if (user == null) {return res.status(404).send('Пользователя не существует')}
     res.json(user)
+})
+
+app.post('/users/:id/addToCart', async(req: Request, res: Response) => {
+    const user = users.find(user => user.id.toString() === req.params.id)
+    if (user == null) {return res.status(404).send('Пользователя не существует')}
+    if (!req.body.item) return res.status(404).send('Товара не существует')
+    user.cart.push(Number(req.body.item.itemId))
 })
 
 app.listen(3001)

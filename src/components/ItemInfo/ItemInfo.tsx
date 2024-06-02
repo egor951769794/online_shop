@@ -1,7 +1,10 @@
 import { Item } from 'src/data/ItemsData';
 import './ItemInfo.css';
 import { categories } from 'src/data/Categories';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import AuthContext from 'src/utils/AuthProvider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import axios from 'src/utils/axios';
 
 
 type ItemInfoProps = {
@@ -27,6 +30,25 @@ export default function ItemInfo(props: ItemInfoProps) {
     }
   }
 
+  const handleCart = async (item: Item | undefined) => {
+    if (!item || !item?.availability) return;
+    item.availability -= 1
+    if (user_id) {
+      await axios.post('/users/' + user_id.toString() + '/addToCart',
+      {item},
+      {
+        headers: { 'Content-Type' : 'application/json' },
+        withCredentials: true
+      })
+      .then()
+      .catch((error) => console.log(error))
+    } else navigate("/login")
+  }
+
+  const user_id = useContext(AuthContext)
+
+  const navigate = useNavigate()
+
   if (props.item) return (
     <>
       <div className='item-info-container'>
@@ -40,6 +62,8 @@ export default function ItemInfo(props: ItemInfoProps) {
         <div className='item-info-bottom'>
           <div className='item-info-info'>
             <div className='item-info-name'>{props.item.name}</div>
+            <div className='item-info-avail'>В наличии {props.item.availability} шт.</div>
+            <div className={'item-info-addcart'.concat(props.item.availability ? '' : ' disabled')} onClick={() => {handleCart(props.item)}}>В корзину</div>
           </div>
           <div className='item-info-photo' onMouseEnter={() => setPhHovered(1)} onMouseLeave={() => setPhHovered(0)}>
             <div className='item-info-photo-buttons'>
@@ -50,8 +74,6 @@ export default function ItemInfo(props: ItemInfoProps) {
               <div className='item-info-photo-buttons-expand' onClick={() => {alert(1)}}></div>
             </div>
             {props.item.photos.length? <img className='item-info-photoImg' src={props.item.photos[selectedPh]}/> : <></>}
-            {/* <img className='item-info-photoImg visible' src={props.item.photos[selectedPh]}/> */}
-            {/* <div>{props.item.photos.map((ph) => <img className='item-info-photo' src={ph}></img>)}</div> */}
           </div>
         </div>
         

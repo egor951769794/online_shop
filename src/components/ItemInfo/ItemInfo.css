@@ -41,10 +41,27 @@
 }
 
 .item-info-info {
+    display: flex;
+    flex-direction: column;
     width: 50%;
     /* background: #f0f0f0; */
     
 }
+
+.item-info-avail {
+    flex-grow: 1;
+}
+
+.item-info-addcart {
+    cursor: pointer;
+    color: white;
+    background: teal;
+    display: block;
+    padding: 14px;
+    justify-self: flex-end;
+    user-select: none;
+}
+
 
 .item-info-name {
     font-size: 24px;

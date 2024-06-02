@@ -5,6 +5,8 @@ import axios from "src/utils/axios"
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router-dom"
 
+import { items } from "src/data/ItemsData"
+
 const fetchUser_url = "/fetchUser"
 
 type CabinetProps = {
@@ -35,6 +37,7 @@ export default function Cabinet(props: CabinetProps) {
   return (
     <>
       <div>{user?.login}</div>
+      {user?.cart.map((item) => <div>{items.find((_item) => _item.itemId === item)?.name}</div>)}
       <div onClick={() => {
           setCookie("user", null, {path: "/"})
           navigate("/")

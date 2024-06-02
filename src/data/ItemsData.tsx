@@ -29,7 +29,8 @@ export interface Item {
     country?: string,
     photos: string[],
     price: number,
-    discount?: number
+    discount?: number,
+    availability: number,
 }
 
 
@@ -47,6 +48,7 @@ export const items: Item[] = [
         country: "Индонезия",
         photos: [bbs],
         price: 7850,
+        availability: 1
     },
     {
         itemId: 1,
@@ -61,7 +63,8 @@ export const items: Item[] = [
         country: "Китай",
         photos: [nsn1, nsn2, nsn3],
         price: 11290,
-        discount: 0.25
+        discount: 0.25,
+        availability: 3
     },
     {
         itemId: 2,
@@ -75,7 +78,8 @@ export const items: Item[] = [
         styleId: [1],
         country: "Индонезия",
         photos: [adsn1, adsn2, adsn3],
-        price: 15299
+        price: 15299,
+        availability: 2
     },
     {
         itemId: 3,
@@ -90,6 +94,7 @@ export const items: Item[] = [
         country: "США",
         photos: [],
         price: 5199,
+        availability: 1
     },
     {
         itemId: 4,
@@ -103,7 +108,8 @@ export const items: Item[] = [
         styleId: [3],
         country: "Индонезия",
         photos: [],
-        price: 3400
+        price: 3400,
+        availability: 6,
     },
     {
         itemId: 5,
@@ -117,7 +123,8 @@ export const items: Item[] = [
         styleId: [1],
         country: "Китай",
         photos: [],
-        price: 2990
+        price: 2990,
+        availability: 7
     },
     {
         itemId: 6,
@@ -131,6 +138,7 @@ export const items: Item[] = [
         styleId: [3],
         country: "Вьетнам",
         photos: [psn1, psn2, psn3],
-        price: 6399
+        price: 6399,
+        availability: 9
     },
 ]
