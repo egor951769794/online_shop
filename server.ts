@@ -47,7 +47,7 @@ app.post('/users/login', async(req: Request, res: Response) => {
     const user = users.find(user => user.login === req.body.login)
     if (user == null) return res.status(400).send('Неверный логин')
     try {
-        if (await compare(req.body.password, user.password)) res.set('user', JSON.stringify(user.id)).send(true) //костыль
+        if (await compare(req.body.password, user.password)) res.set('user', JSON.stringify(user)).send(true) //костыль
         else res.status(400).send('Неверный пароль')
     } catch(err) {
         console.log(err)
@@ -65,6 +65,16 @@ app.post('/users/:id/addToCart', async(req: Request, res: Response) => {
     if (user == null) {return res.status(404).send('Пользователя не существует')}
     if (!req.body.item) return res.status(404).send('Товара не существует')
     user.cart.push(Number(req.body.item.itemId))
+    res.json(user)
+})
+
+app.post('/users/:id/removeFromCart', async(req: Request, res: Response) => {
+    const user = users.find(user => user.id.toString() === req.params.id)
+    if (user == null) {return res.status(404).send('Пользователя не существует')}
+    if (!req.body.item) return res.status(404).send('Товара не существует')
+    const i = user.cart.indexOf(Number(req.body.item.itemId))
+    user.cart.splice(i, 1)
+    res.json(user)
 })
 
 app.listen(3001)

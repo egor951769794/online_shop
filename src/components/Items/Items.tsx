@@ -1,4 +1,4 @@
-import { useState, } from 'react';
+import { useEffect, useState, } from 'react';
 
 import './Items.css';
 import { items } from 'src/data/ItemsData';
@@ -14,22 +14,33 @@ import { colors, materials, seasons, sizes, shoeSizes, styles } from 'src/data/P
 
 import ItemInfo from '../ItemInfo/ItemInfo';
 import { categories } from 'src/data/Categories';
+import { redirect, useLocation, useNavigate } from 'react-router-dom';
 
 type ItemsProps = {
-  categoryId: number
+  categoryId: number,
 }
 
 export default function Items(props: ItemsProps) {
 
   // const [sortMethod, setSortMethod] = useState();
   const [whatToDisplay, setWhatToDisplay] = useState(-1);
+  const [cameFromCab, setCameFromCab] = useState(false);
   const [filter, setFilter] = useState({
-    category: props.categoryId,
+    category: props.categoryId | -2,
     material: [0],
     season: 0,
     color: [0],
     style: [0],
   })
+
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.state.whatToDisplay != undefined) {
+      setWhatToDisplay(location.state.whatToDisplay)
+      setCameFromCab(true)
+    }
+  }, [])
 
   const handlePropertiesSelection = (n: number, arr: number[]) => {
     if (arr.includes(0)) return [n]
@@ -48,7 +59,7 @@ export default function Items(props: ItemsProps) {
 
   return (
     <>
-      <div className='items-wrapper' >
+      <div className='items-wrapper'>
         <ItemsFilter
           display={whatToDisplay == -1}
           content={
@@ -90,7 +101,7 @@ export default function Items(props: ItemsProps) {
           content={
             <>
               {items.filter(
-              (item) => {return item.categoryId.includes(props.categoryId)}
+              (item) => {if (item.categoryId) return item.categoryId.includes(props.categoryId)}
             )
             .filter(filter.material.includes(0) ? () => {return true} : (item) => {return item.materialId?.some(v => filter.material.includes(v))})
             .filter(filter.season > 0 ? (item) => {return item.seasonId == filter.season} : () => {return true})
@@ -102,7 +113,7 @@ export default function Items(props: ItemsProps) {
             </>
           }
         />
-        <ItemInfo goBack={setWhatToDisplay} item={whatToDisplay != -1? items.find((item) => item.itemId == whatToDisplay) : undefined}></ItemInfo>
+        <ItemInfo goBack={setWhatToDisplay} cameFromCab={cameFromCab} item={whatToDisplay != -1? items.find((item) => item.itemId == whatToDisplay) : undefined}></ItemInfo>
       </div>
     </>
   )

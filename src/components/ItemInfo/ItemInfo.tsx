@@ -10,6 +10,7 @@ import axios from 'src/utils/axios';
 type ItemInfoProps = {
   item?: Item
   goBack: React.Dispatch<React.SetStateAction<number>>
+  cameFromCab?: boolean
 }
 
 export default function ItemInfo(props: ItemInfoProps) {
@@ -17,6 +18,8 @@ export default function ItemInfo(props: ItemInfoProps) {
   const [phHovered, setPhHovered] = useState(1)
 
   const [selectedPh, setSelectedPh] = useState(0)
+
+  const [user, setUser] = useState(useContext(AuthContext))
 
   const handlePrev = (value: number) => {
     if (value) {
@@ -32,20 +35,17 @@ export default function ItemInfo(props: ItemInfoProps) {
 
   const handleCart = async (item: Item | undefined) => {
     if (!item || !item?.availability) return;
-    item.availability -= 1
-    if (user_id) {
-      await axios.post('/users/' + user_id.toString() + '/addToCart',
+    if (user?.id) {
+      await axios.post('/users/' + user?.id.toString() + '/addToCart',
       {item},
       {
         headers: { 'Content-Type' : 'application/json' },
         withCredentials: true
       })
-      .then()
+      .then((res) => setUser(res.data))
       .catch((error) => console.log(error))
     } else navigate("/login")
   }
-
-  const user_id = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -53,7 +53,7 @@ export default function ItemInfo(props: ItemInfoProps) {
     <>
       <div className='item-info-container'>
         <div className='item-info-upper'>
-          <div className='item-info-goback' onClick={() => props.goBack(-1)}><i className="arrow"></i>Назад</div>
+          <div className='item-info-goback' onClick={props.cameFromCab? () => navigate("/cabinet") : () => props.goBack(-1)}><i className="arrow"></i>Назад</div>
           <div className='item-info-cats'>
             {props.item.categoryId.map((itemCat) => <div className='item-info-cat'>{categories.find((cat) => cat.categoryId === itemCat)?.title}</div>)}
             {props.item.categoryId.map((itemCat) => categories.map((cat) => <div className='item-info-cat'>{cat.subCategories?.find((subcat) => subcat.categoryId === itemCat)?.title}</div>))}
